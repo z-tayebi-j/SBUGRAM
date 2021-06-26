@@ -1,5 +1,6 @@
 package Controller;
 
+import Model.Main;
 import Model.PageLoader;
 import Model.client.API;
 import Model.common.Account;
@@ -55,9 +56,10 @@ public class SignUpController {
             account.setMothersBirthYear(mother_birth_year.getText());
             account.setFavoriteColor(favorite_color.getText());
             if (account.getProfilePhotoPath() == null) {
-                account.setProfilePhotoPath("View\\user.png");
+                account.setProfilePhotoPath("G:\\uni\\term2\\ap\\code\\my project\\src\\View\\user.png");
             }
             API.signUp(account);
+            Main.account = account;
             new PageLoader().load("timeLine");
         }
     }
@@ -67,7 +69,7 @@ public class SignUpController {
     }
 
 
-    public void set_image(ActionEvent actionEvent) throws Exception {
+    public void set_image(ActionEvent actionEvent) {
         try {
 
             FileChooser fileChooser = new FileChooser();
@@ -75,6 +77,7 @@ public class SignUpController {
             FileInputStream fileInputStream = new FileInputStream(file);
             byte[] bytes = fileInputStream.readAllBytes();
             account.setProfilePhotoPath(file.getPath());
+           // account.setProfilePhoto(bytes);
             Image image = new Image(new ByteArrayInputStream(bytes));
             profileImage.setFill(new ImagePattern(image));
         } catch (Exception e) {

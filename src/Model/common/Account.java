@@ -1,6 +1,7 @@
 package Model.common;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 
 public class Account implements Serializable {
     private String username;
@@ -9,6 +10,10 @@ public class Account implements Serializable {
     private String lastName;
     private String phoneNumber;
     private String profilePhotoPath;
+    public ArrayList<Account> followers = new ArrayList<>();
+    public ArrayList<Account> followings = new ArrayList<>();
+    public ArrayList<Post> posts = new ArrayList<>();
+
     //help fields:
     private String fathersBirthYear;
     private String mothersBirthYear;
@@ -103,7 +108,12 @@ public class Account implements Serializable {
         return profilePhotoPath;
     }
 
+    public String getName() {
+        return firstName + " " + lastName;
+    }
+
     public void setProfilePhotoPath(String profilePhotoPath) {
         this.profilePhotoPath = profilePhotoPath;
     }
+
 }

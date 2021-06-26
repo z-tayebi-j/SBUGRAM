@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.text.Font?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="600.0" style="-fx-background-color: #ffffcc;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.updateInfoController">
+   <children>
+      <Label layoutX="286.0" layoutY="142.0" prefHeight="47.0" prefWidth="171.0" text="(can't change username)">
+         <font>
+            <Font name="Comic Sans MS" size="14.0" />
+         </font>
+      </Label>
+      <TextField fx:id="password" layoutX="252.0" layoutY="413.0" prefHeight="38.0" prefWidth="246.0">
+         <font>
+            <Font name="Comic Sans MS" size="18.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="father_birth_year" layoutX="338.0" layoutY="532.0" prefHeight="38.0" prefWidth="159.0">
+         <font>
+            <Font name="Comic Sans MS" size="18.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="favorite_color" layoutX="338.0" layoutY="634.0" prefHeight="18.0" prefWidth="159.0">
+         <font>
+            <Font name="Comic Sans MS" size="18.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="mother_birth_year" layoutX="338.0" layoutY="583.0" prefHeight="17.0" prefWidth="159.0">
+         <font>
+            <Font name="Comic Sans MS" size="18.0" />
+         </font>
+      </TextField>
+      <Button fx:id="update_info_button" layoutX="105.0" layoutY="687.0" mnemonicParsing="false" onAction="#update" prefHeight="36.0" prefWidth="391.0" style="-fx-background-color: #ccff99;" text="update ">
+         <font>
+            <Font name="Comic Sans MS" size="17.0" />
+         </font>
+      </Button>
+      <TextField fx:id="last_name" layoutX="251.0" layoutY="273.0" prefHeight="38.0" prefWidth="246.0">
+         <font>
+            <Font name="Comic Sans MS" size="18.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="phone_number" layoutX="251.0" layoutY="329.0" prefHeight="38.0" prefWidth="246.0">
+         <font>
+            <Font name="Comic Sans MS" size="18.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="first_name" layoutX="251.0" layoutY="225.0" prefHeight="38.0" prefWidth="246.0">
+         <font>
+            <Font name="Comic Sans MS" size="18.0" />
+         </font>
+      </TextField>
+      <Label fx:id="invalid_password" layoutX="213.0" layoutY="438.0" prefHeight="61.0" prefWidth="159.0" text="invalid password!" textFill="#f20000" visible="false">
+         <font>
+            <Font name="Comic Sans MS" size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="password_guide" layoutX="100.0" layoutY="361.0" prefHeight="61.0" prefWidth="419.0" text="A password must have at least 8 characters (A-Z , a-z and 0-9)">
+         <font>
+            <Font name="Comic Sans MS" size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="107.0" layoutY="483.0" prefHeight="47.0" prefWidth="404.0" text="these questions will be asked if you forgot your password : ">
+         <font>
+            <Font name="Comic Sans MS" size="14.0" />
+         </font>
+      </Label>
+      <Button fx:id="set_image_button" layoutX="293.0" layoutY="83.0" mnemonicParsing="false" onAction="#set_image" prefHeight="36.0" prefWidth="130.0" style="-fx-background-color: #ccff99;" text="set new image">
+         <font>
+            <Font name="Comic Sans MS" size="16.0" />
+         </font>
+      </Button>
+      <Circle fx:id="profileImage" fill="#1176d400" layoutX="152.0" layoutY="101.0" radius="45.0" stroke="BLACK" strokeType="INSIDE" />
+      <Label fx:id="username_label" layoutX="112.0" layoutY="146.0" prefHeight="39.0" prefWidth="159.0" text="\@username" textFill="#4a5bf4">
+         <font>
+            <Font name="Comic Sans MS" size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="username_label1" layoutX="112.0" layoutY="225.0" prefHeight="39.0" prefWidth="106.0" text="first name :" textFill="#000210">
+         <font>
+            <Font name="Comic Sans MS" size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="username_label11" layoutX="112.0" layoutY="530.0" prefHeight="39.0" prefWidth="224.0" text="your father's birth year :" textFill="#000210">
+         <font>
+            <Font name="Comic Sans MS" size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="username_label111" layoutX="112.0" layoutY="582.0" prefHeight="39.0" prefWidth="224.0" text="your mother's birth year :" textFill="#000210">
+         <font>
+            <Font name="Comic Sans MS" size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="username_label112" layoutX="112.0" layoutY="633.0" prefHeight="39.0" prefWidth="224.0" text="your favorite color :" textFill="#000210">
+         <font>
+            <Font name="Comic Sans MS" size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="username_label1121" layoutX="112.0" layoutY="412.0" prefHeight="39.0" prefWidth="224.0" text="password :" textFill="#000210">
+         <font>
+            <Font name="Comic Sans MS" size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="username_label12" layoutX="112.0" layoutY="273.0" prefHeight="39.0" prefWidth="106.0" text="last name :" textFill="#000210">
+         <font>
+            <Font name="Comic Sans MS" size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="username_label13" layoutX="112.0" layoutY="322.0" prefHeight="39.0" prefWidth="130.0" text="phone number :" textFill="#000210">
+         <font>
+            <Font name="Comic Sans MS" size="18.0" />
+         </font>
+      </Label>
+   </children>
+</Pane>

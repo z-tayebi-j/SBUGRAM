@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
@@ -14,8 +15,7 @@ public class ServerEXE {
     private static boolean isServerUp = true;
 
     public static Map<String, Account> accounts = new HashMap<>();
-    public static Set<Post> posts = null;
-
+    public static Set<Post> posts = new HashSet<>();
 
     public static boolean isServerUp() {
         return isServerUp;

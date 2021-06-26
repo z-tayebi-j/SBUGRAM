@@ -7,12 +7,13 @@ import javafx.stage.Stage;
 
 public class Main extends Application {
     public static Account account;
-
+    public static Account toShow_account;
     @Override
     public void start(Stage stage) throws Exception{
-        PageLoader.initStage(stage); //this is only needed when you start program
-        //and need a new stage. all scenes will be loaded on this stage
+        PageLoader.initStage(stage);
         new PageLoader().load("login");
+       // new PageLoader().load("othersProfile");
+
     }
 
     public static void main(String[] args) {

@@ -48,9 +48,34 @@ public class ClientHandler implements Runnable {
                         break;
                     case FORGOTTEN_PASSWORD:
                         answer = API.forgotten_password(input);
+                        break;
+                    case PUBLISH_POST:
+                        answer = API.publish_post(input);
+                        break;
+                    case LOGOUT:
+                        answer = API.logout(input);
+                        break;
+                    case UPDATE_ACCOUNT_INFO:
+                        answer = API.updateAccount(input);
+                        break;
+                    case GET_ALL_ACCOUNTS:
+                        answer = API.gatAllAccounts(input);
+                        break;
+                    case GET_POSTS_OF_AN_ACCOUNT:
+                        answer = API.gatAccountsPosts(input);
+                        break;
+                    case FOLLOW:
+                        answer = API.follow(input);
+                        break;
+                    case UNFOLLOW:
+                        answer = API.unfollow(input);
+                        break;
                 }
                 socketOut.writeObject(answer);
+                socketOut.reset();
                 socketOut.flush();
+
+
             } catch (ClassCastException | ClassNotFoundException e) {
             } catch (EOFException e) {
                 break;

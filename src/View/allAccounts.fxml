@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Line?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="600.0" style="-fx-background-color: #ffffcc;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.allAccountsController">
+   <children>
+      <ListView fx:id="profilesList" layoutY="68.0" prefHeight="732.0" prefWidth="600.0" style="-fx-background-color: #ffffcc;" />
+      <Line endX="600.0" endY="67.29290008544922" startX="-3.051757857974735E-6" startY="67.29290008544922" />
+      <ImageView fitHeight="70.0" fitWidth="77.0" layoutX="14.0" onMouseClicked="#menu" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@menu icon.png" />
+         </image>
+      </ImageView>
+   </children>
+</Pane>
