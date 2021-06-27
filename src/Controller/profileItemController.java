@@ -2,6 +2,7 @@ package Controller;
 
 import Model.Main;
 import Model.PageLoader;
+import Model.client.API;
 import Model.common.Account;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
@@ -31,8 +32,10 @@ public class profileItemController {
         profileImage.setFill(new ImagePattern(new Image(Paths.get(account.getProfilePhotoPath()).toUri().toString())));
         return root;
     }
+
     public void view() throws IOException {
-        Main.toShow_account = account;
+        account = API.getInfo(Main.account_username, account.getUsername());
+        Main.toShow_account_username = account.getUsername();
         new PageLoader().load("othersProfile");
     }
 }

@@ -5,6 +5,7 @@ import Model.PageLoader;
 import Model.client.API;
 import Model.common.Account;
 import Model.common.Post;
+import Model.common.Time;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -37,9 +38,13 @@ public class timeLineController {
 
     @FXML
     public void initialize() {
+        currentPost = new Post();
         postList.setItems(FXCollections.observableArrayList(posts));
         postList.setCellFactory(postList -> new PostItem());
         post_image.setFill(new ImagePattern(new Image("View\\no_image.png")));
+        posts = API.getPostsToShow(account.getUsername());
+        postList.setItems(FXCollections.observableArrayList(posts));
+        postList.setCellFactory(postList -> new PostItem());
     }
 
     public void menu(MouseEvent mouseEvent) throws IOException {
@@ -47,25 +52,25 @@ public class timeLineController {
     }
 
     public void refresh(MouseEvent mouseEvent) {
+        posts = API.getPostsToShow(account.getUsername());
+        postList.setItems(FXCollections.observableArrayList(posts));
+        postList.setCellFactory(postList -> new PostItem());
     }
 
     public void publish(ActionEvent actionEvent) {
-        currentPost= new Post(account,title.getText(),description.getText());
-        //currentPost.setWriter(account);
-        //currentPost.setTitle(title.getText());
-        //currentPost.setDescription(description.getText());
-         API.publish_post(currentPost);
+        currentPost.setWriter(account);
+        currentPost.setTitle(title.getText());
+        currentPost.setDescription(description.getText());
+        currentPost.setCreatedTime(Time.getMilli());
+        API.publish_post(currentPost);
         //save the post in arraylist
-        posts.add(currentPost);
+        posts = API.getPostsToShow(account.getUsername());
+
 
         //show the arraylist in listview
         postList.setItems(FXCollections.observableArrayList(posts));
         postList.setCellFactory(postList -> new PostItem());
-        /*
-        if the listview cells are not customized and list view is made of strings
-        this code will add new post title to the list view
-        postList.getItems().add(currentPost.getTitle());
-         */
+
 
         currentPost = new Post();
         title.setText("");

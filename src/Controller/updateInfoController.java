@@ -30,7 +30,7 @@ public class updateInfoController {
     public Label invalid_password;
     public Circle profileImage;
     public Label username_label;
-    private Account account = Main.account;
+    private Account account = API.getAccount(Main.account_username);
     String valid_password = "[a-zA-Z0-9]{8,}";
 
     public void initialize() {

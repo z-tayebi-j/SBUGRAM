@@ -23,8 +23,7 @@ public class menuController {
 
     public void log_out(ActionEvent actionEvent) throws IOException {
         API.logout(Main.account);
-        System.exit(1);
-       // Main.account = null;
-        //new PageLoader().load("login");
+        Main.account = null;
+        new PageLoader().load("login");
     }
 }

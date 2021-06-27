@@ -4,9 +4,12 @@ import Model.Main;
 import Model.PageLoader;
 import Model.client.API;
 import Model.common.Account;
+import Model.common.Post;
+import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.ListView;
 import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.ImagePattern;
@@ -14,19 +17,23 @@ import javafx.scene.shape.Circle;
 
 import java.io.IOException;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 
 public class othersProfileController {
     public Button follow;
     public Button unfollow;
-    public Account account = Main.toShow_account;
+    public Account account;
     public Circle profileImage;
     public Label name;
     public Label username_label;
     public Label phone_number;
     public Label numOfFollowings;
     public Label numOfFollowers;
+    public ListView postList;
+    ArrayList<Post> posts;
 
     public void initialize() {
+        account = API.getAccount(Main.toShow_account_username);
         name.setText(account.getName());
         username_label.setText("@" + account.getUsername());
         phone_number.setText(account.getPhoneNumber());
@@ -40,22 +47,26 @@ public class othersProfileController {
             unfollow.setVisible(false);
             follow.setVisible(true);
         }
+        posts = API.getAccountsPosts(account.getUsername());
+        postList.setItems(FXCollections.observableArrayList(posts));
+        postList.setCellFactory(postList -> new PostItem());
     }
 
     public void follow(ActionEvent actionEvent) throws IOException {
-        numOfFollowers.setText(String.valueOf(account.followers.size() + 1));
-        API.follow(Main.account.getUsername(), Main.toShow_account.getUsername());
+        int ans = API.follow(Main.account_username, Main.toShow_account_username);
+        numOfFollowers.setText(String.valueOf(ans));
         follow.setVisible(false);
         unfollow.setVisible(true);
     }
 
     public void unfollow(ActionEvent actionEvent) {
-
+        int ans = API.unfollow(Main.account_username, Main.toShow_account_username);
+        numOfFollowers.setText(String.valueOf(ans));
         unfollow.setVisible(false);
         follow.setVisible(true);
     }
 
     public void back(MouseEvent mouseEvent) throws IOException {
-        new PageLoader().load("allAccounts");
+        new PageLoader().load("menu");
     }
 }

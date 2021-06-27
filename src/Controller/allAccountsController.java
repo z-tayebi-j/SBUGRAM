@@ -19,7 +19,7 @@ public class allAccountsController {
 
     @FXML
     public void initialize() {
-        profiles = API.gatAllAccounts();
+        profiles = API.getAllAccounts();
         profiles.remove(Main.account.getUsername());
         profilesList.setItems(FXCollections.observableArrayList(profiles.values()));
         profilesList.setCellFactory(profilesList -> new profileItem());

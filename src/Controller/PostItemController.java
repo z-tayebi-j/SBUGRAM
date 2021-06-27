@@ -2,7 +2,9 @@ package Controller;
 
 import Model.Main;
 import Model.PageLoader;
+import Model.client.API;
 import Model.common.Post;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
@@ -35,16 +37,24 @@ public class PostItemController {
         writer_name.setText(post.getWriter().getName());
         profileImage.setFill(new ImagePattern(new Image(Paths.get(post.getWriter().getProfilePhotoPath()).toUri().toString())));
         description.setText(post.getDescription());
-        if (post.getImagePath().equals(""))
-            post_image.setVisible(false);
-        else
+        if (post.getImagePath() != null) {
+            post_image.setVisible(true);
             post_image.setFill(new ImagePattern(new Image(Paths.get(post.getImagePath()).toUri().toString())));
+        } else
+            post_image.setVisible(false);
+
         return root;
     }
 
     public void show_profile() throws IOException {
-        Main.toShow_account = post.getWriter();
-        new PageLoader().load("othersProfile");
+        Main.toShow_account_username = post.getWriter().getUsername();
+        if (Main.toShow_account_username.equals(Main.account_username)) {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION, "this is your account! if you want to check your profile,go to menu -> my profile");
+            alert.showAndWait();
+        } else {
+            API.getInfo(Main.account_username, post.getWriter().getUsername());
+            new PageLoader().load("othersProfile");
+        }
     }
 
     public void repost() {

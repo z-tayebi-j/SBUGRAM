@@ -10,12 +10,12 @@ public class Post implements Serializable, Comparable {
     private String title;
     private String description;
     private Long createdTime;
-    private String imagePath = "";
+    private String imagePath;
 
     public Post(Account writer, String title, String description) {
         this.writer = writer;
-        this.title=title;
-        this.description=description;
+        this.title = title;
+        this.description = description;
         createdTime = Time.getMilli();
     }
 
@@ -53,10 +53,20 @@ public class Post implements Serializable, Comparable {
 
     @Override
     public int compareTo(Object o) {
-        return 0;
+        Post otherPost = (Post) o;
+        long result = this.getCreatedTime() - otherPost.getCreatedTime();
+        if (result > 0)
+            return -1;
+        else
+            return 1;
     }
+
 
     public Long getCreatedTime() {
         return createdTime;
+    }
+
+    public void setCreatedTime(Long createdTime) {
+        this.createdTime = createdTime;
     }
 }

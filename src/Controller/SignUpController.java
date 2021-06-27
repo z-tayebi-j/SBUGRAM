@@ -44,7 +44,7 @@ public class SignUpController {
     public void Sign_up(ActionEvent actionEvent) throws IOException {
         if (API.doesUserNameExist(username.getText()))
             taken_username.setVisible(true);
-        if (!password.getText().matches(valid_password))
+        else if (!password.getText().matches(valid_password))
             invalid_password.setVisible(true);
         else {
             account.setUsername(username.getText());
@@ -59,6 +59,7 @@ public class SignUpController {
                 account.setProfilePhotoPath("G:\\uni\\term2\\ap\\code\\my project\\src\\View\\user.png");
             }
             API.signUp(account);
+            Main.account_username = username.getText();
             Main.account = account;
             new PageLoader().load("timeLine");
         }
@@ -77,7 +78,7 @@ public class SignUpController {
             FileInputStream fileInputStream = new FileInputStream(file);
             byte[] bytes = fileInputStream.readAllBytes();
             account.setProfilePhotoPath(file.getPath());
-           // account.setProfilePhoto(bytes);
+            // account.setProfilePhoto(bytes);
             Image image = new Image(new ByteArrayInputStream(bytes));
             profileImage.setFill(new ImagePattern(image));
         } catch (Exception e) {

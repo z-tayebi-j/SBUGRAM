@@ -42,6 +42,7 @@ public class LoginController {
         if (account == null)
             wrong_label.setVisible(true);
         else {
+            Main.account_username = username_field.getText();
             Main.account = account;
             new PageLoader().load("timeLine");
         }

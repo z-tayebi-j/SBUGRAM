@@ -28,17 +28,18 @@ public class myProfileController {
     public Label username_label;
     public ListView postList;
     ArrayList<Post> posts;
-    private Account account = Main.account;
+    private Account account;
 
     @FXML
     public void initialize() {
+        account = API.getAccount(Main.account_username);
         name.setText(account.getName());
         username_label.setText("@" + account.getUsername());
         phone_number.setText(account.getPhoneNumber());
         numOfFollowers.setText(String.valueOf(account.followers.size()));
         numOfFollowings.setText(String.valueOf(account.followings.size()));
         profileImage.setFill(new ImagePattern(new Image(Paths.get(account.getProfilePhotoPath()).toUri().toString())));
-        posts = API.gatAccountsPosts(account.getUsername());
+        posts = API.getAccountsPosts(account.getUsername());
         postList.setItems(FXCollections.observableArrayList(posts));
         postList.setCellFactory(postList -> new PostItem());
     }

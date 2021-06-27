@@ -78,14 +78,14 @@ public class API {
         return (Boolean) recieved.get("answer");
     }
 
-    public static Map<String, Account> gatAllAccounts() {
+    public static Map<String, Account> getAllAccounts() {
         Map<String, Object> toSend = new HashMap<>();
         toSend.put("command", Command.GET_ALL_ACCOUNTS);
         Map<String, Object> recieved = ClientNetworker.serve(toSend);
         return (Map<String, Account>) recieved.get("answer");
     }
 
-    public static ArrayList<Post> gatAccountsPosts(String username) {
+    public static ArrayList<Post> getAccountsPosts(String username) {
         Map<String, Object> toSend = new HashMap<>();
         toSend.put("command", Command.GET_POSTS_OF_AN_ACCOUNT);
         toSend.put("username", username);
@@ -93,18 +93,44 @@ public class API {
         return (ArrayList<Post>) recieved.get("answer");
     }
 
-    public static void follow(String follower, String following) {
+    public static int follow(String follower, String following) {
         Map<String, Object> toSend = new HashMap<>();
         toSend.put("command", Command.FOLLOW);
         toSend.put("follower", follower);
         toSend.put("following", following);
         Map<String, Object> recieved = ClientNetworker.serve(toSend);
+        return (int) recieved.get("answer");
     }
-    public static void unfollow(String unfollower, String target) {
+
+    public static int unfollow(String unfollower, String target) {
         Map<String, Object> toSend = new HashMap<>();
         toSend.put("command", Command.UNFOLLOW);
         toSend.put("unfollower", unfollower);
         toSend.put("target", target);
         Map<String, Object> recieved = ClientNetworker.serve(toSend);
+        return (int) recieved.get("answer");
+    }
+
+    public static ArrayList<Post> getPostsToShow(String username) {
+        Map<String, Object> toSend = new HashMap<>();
+        toSend.put("command", Command.GET_POSTS_TO_SHOW);
+        toSend.put("username", username);
+        Map<String, Object> recieved = ClientNetworker.serve(toSend);
+        return (ArrayList<Post>) recieved.get("answer");
+    }
+    public static Account getAccount(String username) {
+        Map<String, Object> toSend = new HashMap<>();
+        toSend.put("command", Command.GET_ACCOUNT);
+        toSend.put("username", username);
+        Map<String, Object> recieved = ClientNetworker.serve(toSend);
+        return (Account) recieved.get("answer");
+    }
+    public static Account getInfo(String username, String target) {
+        Map<String, Object> toSend = new HashMap<>();
+        toSend.put("command", Command.GET_INFO);
+        toSend.put("username", username);
+        toSend.put("target", target);
+        Map<String, Object> recieved = ClientNetworker.serve(toSend);
+        return (Account) recieved.get("answer");
     }
 }

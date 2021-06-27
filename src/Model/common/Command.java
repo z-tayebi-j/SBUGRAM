@@ -12,4 +12,7 @@ public enum Command {
     GET_POSTS_OF_AN_ACCOUNT,
     FOLLOW,
     UNFOLLOW,
+    GET_POSTS_TO_SHOW,
+    GET_ACCOUNT,
+    GET_INFO,
 }
